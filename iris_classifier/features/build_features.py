@@ -150,7 +150,7 @@ class FeatureBuilder:
         loader = self._tensor_to_dataloader(X=X, y=y)
 
         create_pickle(
-            file=loader, filename=os.path.join(PATH, "{}".format(dataset["name"]))
+            file=loader, filename=os.path.join(PATH, "{}.pkl".format(dataset["name"]))
         )
 
     def _tensor_to_dataloader(self, **dataset):

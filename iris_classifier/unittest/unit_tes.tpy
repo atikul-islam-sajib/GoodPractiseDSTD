@@ -1,0 +1,69 @@
+import unittest
+import sys
+import os
+
+sys.path.append("/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier")
+
+from utils.utils import load_pickle
+
+PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/data/processed/"
+
+
+class FeatureTest(unittest.TestCase):
+    """
+    A test case for validating the feature data loaders for the Iris Classifier project.
+
+    This class contains tests to ensure that the training and validation datasets loaded from
+    pickle files have the correct number of records as expected.
+    """
+
+    def setUp(self):
+        """
+        Set up test environment.
+
+        Loads the training and validation datasets from pickle files before each test.
+        Initializes the total_records counter to 0.
+        """
+        self.train_loader = load_pickle(
+            filename=os.path.join(PATH, "train_loader.pkl"),
+        )
+        self.test_loader = load_pickle(
+            filename=os.path.join(PATH, "test_loader.pkl"),
+        )
+        self.total_records = 0
+
+    def tearDown(self):
+        """
+        Tear down the test environment.
+
+        Resets the total_records counter to 0 after each test.
+        """
+        self.total_records = 0
+
+    def test_train_features_pickle(self):
+        """
+        Test to ensure the training dataset has the correct number of records.
+
+        Iterates through the training data loader and sums up the number of records.
+        Asserts that this sum is approximately equal to the expected number (120).
+        """
+        for data, _ in self.train_loader:
+            self.total_records += data.shape[0]
+
+        self.assertAlmostEqual(self.total_records, 120)
+
+    def test_val_features_pickle(self):
+        """
+        Test to ensure the validation dataset has the correct number of records.
+
+        Iterates through the validation data loader and sums up the number of records.
+        Asserts that this sum is exactly equal to the expected number (30).
+        """
+        for data, _ in self.test_loader:
+            self.total_records += data.shape[0]
+
+        self.assertEqual(self.total_records, 30)
+
+
+if __name__ == "__main__":
+    unittest.main()
