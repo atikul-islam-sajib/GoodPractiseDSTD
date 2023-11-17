@@ -15,7 +15,7 @@ logging.basicConfig(
 )
 
 # Path where the charts will be saved
-PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier/visualization/"
+PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier/visualization/charts"
 
 
 class Visualizer:
