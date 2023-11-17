@@ -1,6 +1,14 @@
 import unittest
 import sys
 import os
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    filename="unit_test.log",
+    filemode="w",
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
 
 sys.path.append("/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier")
 
@@ -24,6 +32,9 @@ class FeatureTest(unittest.TestCase):
         Loads the training and validation datasets from pickle files before each test.
         Initializes the total_records counter to 0.
         """
+
+        logging.info("Running FeatureTest setUp")
+
         self.train_loader = load_pickle(
             filename=os.path.join(PATH, "train_loader.pkl"),
         )
@@ -38,6 +49,8 @@ class FeatureTest(unittest.TestCase):
 
         Resets the total_records counter to 0 after each test.
         """
+        logging.info("Running FeatureTest tearDown")
+
         self.total_records = 0
 
     def test_train_features_pickle(self):
@@ -47,6 +60,9 @@ class FeatureTest(unittest.TestCase):
         Iterates through the training data loader and sums up the number of records.
         Asserts that this sum is approximately equal to the expected number (120).
         """
+
+        logging.info("Running FeatureTest test_train_features_pickle")
+
         for data, _ in self.train_loader:
             self.total_records += data.shape[0]
 
@@ -59,6 +75,9 @@ class FeatureTest(unittest.TestCase):
         Iterates through the validation data loader and sums up the number of records.
         Asserts that this sum is exactly equal to the expected number (30).
         """
+
+        logging.info("Running FeatureTest test_val_features_pickle")
+
         for data, _ in self.test_loader:
             self.total_records += data.shape[0]
 
