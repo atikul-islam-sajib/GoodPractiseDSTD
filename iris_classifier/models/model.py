@@ -45,7 +45,7 @@ class Classifier(nn.Module):
 
         # Define a fully connected layer
         self.fc = self._connected_layer(
-            layers_config=[(16 + 16 + 16, 32, 0.5), (32, 16, 0.5), (16, 3)], prefix="fc"
+            layers_config=[(16 + 16 + 16, 32, 0.3), (32, 16, 0.7), (16, 3)], prefix="fc"
         )
 
     def _make_layers(self, layers_config: list, prefix: str):
@@ -82,7 +82,7 @@ class Classifier(nn.Module):
     def forward(self, x):
         """Defines the forward pass of the model."""
         left = self.left(x)
-        middle = self.middle(left)
+        middle = self.middle(x)
         right = self.right(x)
 
         concat = torch.cat((left, middle, right), dim=1)

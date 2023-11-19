@@ -17,3 +17,6 @@ def define_optimizer(model, lr=0.001):
 
 def define_loss_function():
     return nn.CrossEntropyLoss()
+
+
+
