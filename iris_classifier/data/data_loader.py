@@ -14,7 +14,7 @@ from utils.utils import create_pickle
 
 logging.basicConfig(
     level=logging.INFO,
-    filename="dataset.log",
+    filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs/dataset.log",
     filemode="w",
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )

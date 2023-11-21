@@ -17,7 +17,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 # Setting up logging configuration
 logging.basicConfig(
     level=logging.INFO,
-    filename="train_model.log",
+    filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs/train_model.log",
     filemode="w",
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
@@ -215,6 +215,11 @@ class Trainer:
             else:
                 logging.info("Nothing is showing.".title())
 
+            try:
+                create_pickle(file=model_trainer.history, filename="history.pkl")
+            except Exception as e:
+                logging.exception("Cannot create pickle file".title())
+
     def model_performance(self):
         """
         Visualizes the training history of a machine learning model.
@@ -249,12 +254,6 @@ if __name__ == "__main__":
     if args.epochs and args.lr and args.display:
         model_trainer = Trainer(args.epochs, args.lr, args.display)
         model_trainer.train()
-
-        try:
-            create_pickle(file=model_trainer.history, filename="history.pkl")
-        except Exception as e:
-            logging.exception("Cannot create pickle file".title())
-
         model_trainer.model_performance()
 
     else:

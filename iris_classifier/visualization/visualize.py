@@ -8,7 +8,7 @@ import seaborn as sns
 # Configure basic logging settings
 logging.basicConfig(
     level=logging.INFO,
-    filename="chars.log",
+    filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs/chars.log",
     filemode="w",
     format="%(levelname)s %(asctime)s %(message)s",
 )

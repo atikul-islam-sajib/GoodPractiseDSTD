@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 
 logging.basicConfig(
     level=logging.INFO,
-    filename="features.log",
+    filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs/features.log",
     filemode="w",
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )

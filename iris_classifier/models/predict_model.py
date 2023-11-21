@@ -22,7 +22,7 @@ from utils.utils import load_model, load_pickle, create_pickle
 logging.basicConfig(
     level=logging.INFO,
     filemode="w",
-    filename="predict.log",
+    filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs/predict.log",
     format="%(levelname)s:%(message)s",
 )
 
