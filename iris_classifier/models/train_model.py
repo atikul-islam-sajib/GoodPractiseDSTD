@@ -34,9 +34,10 @@ from utils.utils import (
     define_loss_function as loss_function,
     define_optimizer as optimizer,
     load_pickle,
-    get_data,
+    create_pickle,
 )
 from models.model import Classifier
+from visualization.visualize import Visualizer
 
 
 class Trainer:
@@ -66,8 +67,8 @@ class Trainer:
         self.history = {
             "train_loss": [],
             "train_accuracy": [],
-            "val_loss": [],
-            "val_accuracy": [],
+            "test_loss": [],
+            "test_accuracy": [],
         }
 
     def convert_to_long(self, label):
@@ -134,14 +135,14 @@ class Trainer:
 
         return accuracy_score(predict, actual)
 
-    def _save_historical_data(self, loss, accuracy):
+    def _save_historical_data(self, loss, accuracy, specify):
         """
         Saves the computed loss and accuracy in the training history for later analysis.
         """
         logging.info("Saving historical data.".capitalize())
 
-        self.history["train_loss"].append(loss)
-        self.history["train_accuracy"].append(accuracy)
+        self.history["{}_loss".format(specify)].append(loss)
+        self.history["{}_accuracy".format(specify)].append(accuracy)
 
     def _display(self, **data):
         """
@@ -189,8 +190,12 @@ class Trainer:
             )
 
             logging.info("Saving the loss and train in the history".title())
-            self._save_historical_data(loss=train_total_loss, accuracy=train_accuracy)
-            self._save_historical_data(loss=val_total_loss, accuracy=val_accuracy)
+            self._save_historical_data(
+                loss=train_total_loss, accuracy=train_accuracy, specify="train"
+            )
+            self._save_historical_data(
+                loss=val_total_loss, accuracy=val_accuracy, specify="test"
+            )
 
             if self.display:
                 self._display(
@@ -203,6 +208,25 @@ class Trainer:
                 )
             else:
                 logging.info("Nothing is showing.".title())
+
+    def model_performance(self):
+        """
+        Visualizes the training history of a machine learning model.
+
+        Loads training history from a pickle file and displays loss and accuracy metrics
+        using the Visualizer class. Assumes history contains 'train_loss', 'test_loss',
+        'train_accuracy', and 'test_accuracy'.
+        """
+        history = load_pickle(
+            filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/history.pkl"
+        )
+        Visualizer().show_model_performance(
+            train_loss=history["train_loss"], val_loss=history["test_loss"]
+        )
+        Visualizer().show_model_performance(
+            train_accuracy=history["train_accuracy"],
+            val_accuracy=history["test_accuracy"],
+        )
 
 
 if __name__ == "__main__":
@@ -219,6 +243,13 @@ if __name__ == "__main__":
     if args.epochs and args.lr and args.display:
         model_trainer = Trainer(args.epochs, args.lr, args.display)
         model_trainer.train()
+
+        try:
+            create_pickle(file=model_trainer.history, filename="history.pkl")
+        except Exception as e:
+            logging.exception("Cannot create pickle file".title())
+
+        model_trainer.model_performance()
 
     else:
         logging.exception("Define is not correct".title())

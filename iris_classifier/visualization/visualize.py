@@ -1,7 +1,6 @@
 import logging
 import argparse
 import os
-import cv2
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -15,7 +14,7 @@ logging.basicConfig(
 )
 
 # Path where the charts will be saved
-PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier/visualization/charts"
+PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier/visualization/charts/"
 
 
 class Visualizer:
@@ -84,6 +83,15 @@ class Visualizer:
             sns.histplot(data=dataset, x=feature)
 
         plt.savefig("{}distribution.png".format(PATH))
+        plt.clf()
+
+    def show_model_performance(self, **metrics):
+        for index, (key, value) in enumerate(metrics.items()):
+            plt.plot(value, label=key)
+            plt.legend()
+
+        plt.savefig(os.path.join(PATH, "model-{}.png".format(key.split("_")[1])))
+        plt.show()
         plt.clf()
 
 
