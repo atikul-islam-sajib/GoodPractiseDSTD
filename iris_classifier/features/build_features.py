@@ -57,52 +57,14 @@ class FeatureBuilder:
         """
         logging.info("Building Features starts")
         data_frame = pd.read_csv(df)
-        data_frame.loc[:, "species"] = data_frame.loc[:, "species"].map(
-            self._label_encoding(data_frame.loc[:, "species"])
-        )
-        dataset = self._normalization(dataset=data_frame)
 
         logging.info("Creating the pickle file")
         create_pickle(
-            file=dataset,
+            file=data_frame,
             filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/data/processed/{}.pkl".format(
                 df.split("/")[-1].split(".")[0]
             ),
         )
-
-    def _label_encoding(self, target):
-        """
-        Performs label encoding on the 'species' column.
-
-        Args:
-            target (pd.Series): The target column to encode.
-
-        Returns:
-            dict: A dictionary mapping unique values to indices.
-        """
-        return {value: index for index, value in enumerate(target.unique())}
-
-    def _normalization(self, dataset):
-        """
-        Performs standard scaling for normalization.
-
-        Args:
-            dataset (pd.DataFrame): The input dataset.
-
-        Returns:
-            pd.DataFrame: The normalized dataset.
-        """
-        logging.info("Standard scaling is used for normalization technique".title())
-
-        scaler = StandardScaler()
-        independent_features = scaler.fit_transform(
-            dataset.loc[:, dataset.columns != "species"]
-        )
-
-        dependent_features = dataset.loc[:, "species"]
-        independent_features = pd.DataFrame(independent_features)
-        dependent_features = pd.DataFrame(dependent_features)
-        return pd.concat([independent_features, dependent_features], axis=1)
 
     def create_data_loader(self):
         """
@@ -174,7 +136,7 @@ class FeatureBuilder:
         and then creates a DataLoader object for efficient data handling.
         """
         data_loader = DataLoader(
-            dataset=list(zip(dataset["X"], dataset["y"])), batch_size=64
+            dataset=list(zip(dataset["X"], dataset["y"])), batch_size=16
         )
         return data_loader
 

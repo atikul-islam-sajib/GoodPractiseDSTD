@@ -25,6 +25,7 @@ logging.basicConfig(
 # Defining path constants for model and data
 PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier"
 DATA_PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/data/processed"
+MODEL_PATH = "//Users/shahmuhammadraditrahman/Desktop/IrisClassifier/models"
 
 sys.path.append(PATH)
 
@@ -33,6 +34,7 @@ from utils.utils import (
     define_loss_function as loss_function,
     define_optimizer as optimizer,
     load_pickle,
+    get_data,
 )
 from models.model import Classifier
 
@@ -76,7 +78,7 @@ class Trainer:
 
         return torch.Tensor(label).long()
 
-    def _predict_and_evaluate_loss(self, dataset, specify):
+    def _predict_and_evaluate_loss(self, dataset, specify, epoch):
         """
         Makes predictions on the given dataset and evaluates the loss.
         It also records the actual and predicted labels for accuracy computation.
@@ -95,10 +97,13 @@ class Trainer:
 
             if specify != "test":
                 self._do_backward_propagation(loss=loss)
+                torch.save(
+                    self.model, os.path.join(MODEL_PATH, f"model_{epoch + 1}.pth")
+                )
 
-            actual.extend(label)
-            predict.extend(torch.argmax(prediction, dim=1))
-            loss_compute.append(loss.item())
+        actual.extend(label)
+        predict.extend(torch.argmax(prediction, dim=1))
+        loss_compute.append(loss.item())
 
         return actual, predict, np.array(loss_compute).mean()
 
@@ -167,11 +172,11 @@ class Trainer:
                 train_predict,
                 train_total_loss,
             ) = self._predict_and_evaluate_loss(
-                dataset=self.train_loader, specify="train"
+                dataset=self.train_loader, specify="train", epoch=epoch
             )
 
             (val_actual, val_predict, val_total_loss) = self._predict_and_evaluate_loss(
-                dataset=self.test_loader, specify="test"
+                dataset=self.test_loader, specify="test", epoch=epoch
             )
 
             logging.info("Epoch: {}/{}".format(epoch + 1, self.epochs))

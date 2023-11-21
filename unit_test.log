@@ -1,6 +1,8 @@
-2023-11-17 22:17:14,838 - root - INFO - Running FeatureTest setUp
-2023-11-17 22:17:14,843 - root - INFO - Running FeatureTest test_train_features_pickle
-2023-11-17 22:17:14,844 - root - INFO - Running FeatureTest tearDown
-2023-11-17 22:17:14,844 - root - INFO - Running FeatureTest setUp
-2023-11-17 22:17:14,848 - root - INFO - Running FeatureTest test_val_features_pickle
-2023-11-17 22:17:14,848 - root - INFO - Running FeatureTest tearDown
+2023-11-21 19:55:22,328 - numexpr.utils - INFO - Note: NumExpr detected 10 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-11-21 19:55:22,329 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2023-11-21 19:55:23,156 - root - INFO - Running FeatureTest setUp
+2023-11-21 19:55:23,162 - root - INFO - Running FeatureTest test_train_features_pickle
+2023-11-21 19:55:23,163 - root - INFO - Running FeatureTest tearDown
+2023-11-21 19:55:23,163 - root - INFO - Running FeatureTest setUp
+2023-11-21 19:55:23,168 - root - INFO - Running FeatureTest test_val_features_pickle
+2023-11-21 19:55:23,169 - root - INFO - Running FeatureTest tearDown

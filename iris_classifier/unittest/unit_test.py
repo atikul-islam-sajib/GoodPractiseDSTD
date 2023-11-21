@@ -15,6 +15,9 @@ sys.path.append("/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_clas
 from utils.utils import load_pickle
 
 PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/data/processed/"
+METRICS_PATH = (
+    "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier/unittest"
+)
 
 
 class FeatureTest(unittest.TestCase):
@@ -82,6 +85,18 @@ class FeatureTest(unittest.TestCase):
             self.total_records += data.shape[0]
 
         self.assertEqual(self.total_records, 30)
+
+
+class ModelPrediction(unittest.TestCase):
+    def setUp(self):
+        self.metrics = load_pickle(filename=os.path.join(METRICS_PATH, "metrics.pkl"))
+        print(self.metrics)
+
+    def test_predict_model(self):
+        self.assertGreater(self.metrics["Accuracy"], 0.80)
+        self.assertGreater(self.metrics["Precision"], 0.80)
+        self.assertGreater(self.metrics["Recall"], 0.80)
+        self.assertGreater(self.metrics["F1_Score"], 0.80)
 
 
 if __name__ == "__main__":
