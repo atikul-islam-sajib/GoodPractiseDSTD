@@ -14,10 +14,7 @@ sys.path.append("/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_clas
 
 from utils.utils import load_pickle
 
-PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/data/processed/"
-METRICS_PATH = (
-    "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier/unittest"
-)
+import config
 
 
 class FeatureTest(unittest.TestCase):
@@ -39,10 +36,10 @@ class FeatureTest(unittest.TestCase):
         logging.info("Running FeatureTest setUp")
 
         self.train_loader = load_pickle(
-            filename=os.path.join(PATH, "train_loader.pkl"),
+            filename=os.path.join(config.DATA_PATH, "train_loader.pkl"),
         )
         self.test_loader = load_pickle(
-            filename=os.path.join(PATH, "test_loader.pkl"),
+            filename=os.path.join(config.DATA_PATH, "test_loader.pkl"),
         )
         self.total_records = 0
 
@@ -89,7 +86,9 @@ class FeatureTest(unittest.TestCase):
 
 class ModelPrediction(unittest.TestCase):
     def setUp(self):
-        self.metrics = load_pickle(filename=os.path.join(METRICS_PATH, "metrics.pkl"))
+        self.metrics = load_pickle(
+            filename=os.path.join(config.METRICS_PATH, "metrics.pkl")
+        )
         print(self.metrics)
 
     def test_predict_model(self):

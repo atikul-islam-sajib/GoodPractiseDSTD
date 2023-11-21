@@ -1,4 +1,0 @@
-2023-11-21 19:10:40,245 - root - INFO - Loading Data & Scaling The Dataset
-2023-11-21 19:10:40,246 - root - INFO - Standard Scaling Is Used For Normalization Technique
-2023-11-21 19:10:40,248 - root - INFO - Splitting dataset
-2023-11-21 19:10:40,250 - root - INFO - Completed the data splitting and loader

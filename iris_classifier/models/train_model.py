@@ -24,10 +24,11 @@ logging.basicConfig(
 
 # Defining path constants for model and data
 PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier"
-DATA_PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/data/processed"
-MODEL_PATH = "//Users/shahmuhammadraditrahman/Desktop/IrisClassifier/models"
 
 sys.path.append(PATH)
+
+import config
+
 
 # Importing necessary utility functions and the Classifier model
 from utils.utils import (
@@ -58,8 +59,12 @@ class Trainer:
         self.epochs = epochs
         self.learning_rate = lr
         self.display = display
-        self.train_loader = load_pickle(os.path.join(DATA_PATH, "train_loader.pkl"))
-        self.test_loader = load_pickle(os.path.join(DATA_PATH, "test_loader.pkl"))
+        self.train_loader = load_pickle(
+            os.path.join(config.DATA_PATH, "train_loader.pkl")
+        )
+        self.test_loader = load_pickle(
+            os.path.join(config.DATA_PATH, "test_loader.pkl")
+        )
         self.model = Classifier()
 
         self.loss_function = loss_function()
@@ -99,7 +104,8 @@ class Trainer:
             if specify != "test":
                 self._do_backward_propagation(loss=loss)
                 torch.save(
-                    self.model, os.path.join(MODEL_PATH, f"model_{epoch + 1}.pth")
+                    self.model,
+                    os.path.join(config.MODEL_PATH, f"model_{epoch + 1}.pth"),
                 )
 
         actual.extend(label)

@@ -12,10 +12,10 @@ from sklearn.metrics import (
 )
 
 PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier"
-MODEL_PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/models"
-DATA_PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/data/processed"
 
 sys.path.append(PATH)
+
+import config
 
 from utils.utils import load_model, load_pickle, create_pickle
 
@@ -32,12 +32,14 @@ class Predict:
         logging.info("Configure the data".title())
         self.model = load_model(
             os.path.join(
-                MODEL_PATH,
-                "model_{}.pth".format(len(os.listdir(os.path.join(MODEL_PATH))) - 1),
+                config.MODEL_PATH,
+                "model_{}.pth".format(
+                    len(os.listdir(os.path.join(config.MODEL_PATH))) - 1
+                ),
             )
         )
         self.test_data = load_pickle(
-            filename=os.path.join(DATA_PATH, "test_loader.pkl")
+            filename=os.path.join(config.DATA_PATH, "test_loader.pkl")
         )
         self.metrics = {}
 
