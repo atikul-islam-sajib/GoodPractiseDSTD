@@ -31,7 +31,10 @@ The application can be used in several ways:
 
 To preprocess your data and train the model:
 
+```bash
 python iris_classifier/command_line.py --dataset /path/to/IRIS.csv --split 0.20 --preprocessing
+
+```
 
 - `--dataset`: Path to the dataset
 - `--split`: Fraction of data to be used as the test set
@@ -40,7 +43,10 @@ python iris_classifier/command_line.py --dataset /path/to/IRIS.csv --split 0.20 
 
 To train the model with custom epochs and learning rate, and to display training progress:
 
+```bash
 python iris_classifier/command_line.py --epochs 200 --lr 0.001 --display True
+
+```
 
 - `--epochs`: Number of training epochs
 - `--lr`: Learning rate
