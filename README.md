@@ -64,7 +64,3 @@ This project is licensed under the [MIT License](LICENSE).
 ## Contact
 
 For any queries, please contact [Atikul Islam Sajib] at [atikul.sajib@ptb.de].
-
-```
-
-```
