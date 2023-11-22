@@ -12,8 +12,8 @@ The Iris Classifier is a Python-based machine learning application designed to c
 
 ## Prerequisites
 
-- Python 3.x
-- Required libraries: [list any libraries your project depends on]
+- Python 3.9
+- Required libraries: pip install -r requirements.txt
 
 ## Installation
 
