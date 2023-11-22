@@ -18,11 +18,9 @@ The Iris Classifier is a Python-based machine learning application designed to c
 ## Installation
 
 ```bash
-Clone the repository to your local machine:
+1. git clone https://github.com/atikul-islam-sajib/GoodPractiseDSTD/tree/main
 
-git clone [repository URL]
-
-cd /IrisClassifier/iris_classifier
+2. cd /IrisClassifier/iris_classifier
 
 ```
 
