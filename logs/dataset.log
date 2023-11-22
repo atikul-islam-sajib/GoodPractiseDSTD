@@ -1,0 +1,8 @@
+2023-11-22 22:09:40,799 - root - INFO - Predict class is called
+2023-11-22 22:09:40,799 - root - INFO - Configure The Data
+2023-11-22 22:09:40,801 - root - INFO - Predicting
+2023-11-22 22:09:40,803 - root - INFO - 0.9
+2023-11-22 22:09:40,804 - root - INFO - 0.882051282051282
+2023-11-22 22:09:40,805 - root - INFO - 0.8632478632478633
+2023-11-22 22:09:40,806 - root - INFO - 0.867979797979798
+2023-11-22 22:09:40,809 - root - INFO - Save The Metrics

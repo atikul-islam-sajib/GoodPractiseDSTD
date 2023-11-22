@@ -1,0 +1,11 @@
+2023-11-22 22:01:48,690 - root - INFO - Dataloader class is called
+2023-11-22 22:01:48,690 - root - INFO - Loading Data & Scaling The Dataset
+2023-11-22 22:01:48,693 - root - INFO - Standard Scaling Is Used For Normalization Technique
+2023-11-22 22:01:48,694 - root - INFO - Splitting dataset
+2023-11-22 22:01:48,695 - root - INFO - Buildfeatures class is called
+2023-11-22 22:01:48,695 - features.build_features - INFO - Initializing FeatureBuilder
+2023-11-22 22:01:48,695 - root - INFO - Building Features starts
+2023-11-22 22:01:48,696 - root - INFO - Creating the pickle file
+2023-11-22 22:01:48,696 - root - INFO - Building Features starts
+2023-11-22 22:01:48,697 - root - INFO - Creating the pickle file
+2023-11-22 22:01:48,703 - root - INFO - Dataloader & featurebuilder class is executed
