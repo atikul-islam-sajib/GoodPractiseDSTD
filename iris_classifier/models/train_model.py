@@ -14,20 +14,20 @@ import numpy as np
 import torch.nn as nn
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
-# Setting up logging configuration
-logging.basicConfig(
-    level=logging.INFO,
-    filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs/train_model.log",
-    filemode="w",
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-)
-
 # Defining path constants for model and data
 PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier"
 
 sys.path.append(PATH)
 
 import config
+
+# Setting up logging configuration
+logging.basicConfig(
+    level=logging.INFO,
+    filename=os.path.join(config.LOGS_PATH, "train_model.log"),
+    filemode="w",
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
 
 
 # Importing necessary utility functions and the Classifier model
@@ -105,7 +105,9 @@ class Trainer:
                 self._do_backward_propagation(loss=loss)
                 torch.save(
                     self.model,
-                    os.path.join(config.MODEL_PATH, f"model_{epoch + 1}.pth"),
+                    os.path.join(
+                        config.MODEL_CHECK_POINT_PATH, f"model_{epoch + 1}.pth"
+                    ),
                 )
 
         actual.extend(label)
@@ -215,11 +217,6 @@ class Trainer:
             else:
                 logging.info("Nothing is showing.".title())
 
-            try:
-                create_pickle(file=model_trainer.history, filename="history.pkl")
-            except Exception as e:
-                logging.exception("Cannot create pickle file".title())
-
     def model_performance(self):
         """
         Visualizes the training history of a machine learning model.
@@ -228,9 +225,10 @@ class Trainer:
         using the Visualizer class. Assumes history contains 'train_loss', 'test_loss',
         'train_accuracy', and 'test_accuracy'.
         """
-        history = load_pickle(
-            filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/history.pkl"
-        )
+        logging.info("Visualizing model performance".title())
+
+        history = load_pickle(filename=os.path.join(config.MODEL_PATH, "history.pkl"))
+
         Visualizer().show_model_performance(
             train_loss=history["train_loss"], val_loss=history["test_loss"]
         )

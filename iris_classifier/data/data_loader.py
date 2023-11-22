@@ -10,16 +10,14 @@ import os
 sys.path.append("/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier")
 
 from utils.utils import create_pickle
-
+import config
 
 logging.basicConfig(
     level=logging.INFO,
-    filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs/dataset.log",
+    filename=os.path.join(config.LOGS_PATH, "dataset.log"),
     filemode="w",
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
-
-PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/data/processed/"
 
 
 class DataLoader:
@@ -103,11 +101,11 @@ class DataLoader:
         train, test = train_test_split(data_frame, test_size=split_ratio)
         try:
             train.to_csv(
-                os.path.join(PATH, "train.csv"),
+                os.path.join(config.DATA_PATH, "train.csv"),
                 index=False,
             )
             test.to_csv(
-                os.path.join(PATH, "test.csv"),
+                os.path.join(config.DATA_PATH, "test.csv"),
                 index=False,
             )
         except ValueError as e:

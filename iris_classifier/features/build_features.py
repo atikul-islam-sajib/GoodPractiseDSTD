@@ -7,14 +7,6 @@ from torch.utils.data import DataLoader
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
-logging.basicConfig(
-    level=logging.INFO,
-    filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs/features.log",
-    filemode="w",
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-)
-logger = logging.getLogger(__name__)
-
 import sys
 
 sys.path.append("/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier")
@@ -22,6 +14,15 @@ sys.path.append("/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_clas
 from utils.utils import create_pickle, load_pickle
 
 PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/data/processed/"
+import config
+
+logging.basicConfig(
+    level=logging.INFO,
+    filename=os.path.join(config.LOGS_PATH, "features.log"),
+    filemode="w",
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
+logger = logging.getLogger(__name__)
 
 
 class FeatureBuilder:

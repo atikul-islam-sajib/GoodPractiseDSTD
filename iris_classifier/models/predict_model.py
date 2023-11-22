@@ -2,14 +2,7 @@ import argparse
 import logging
 import os
 import sys
-from sklearn.metrics import (
-    accuracy_score,
-    recall_score,
-    precision_score,
-    f1_score,
-    classification_report,
-    confusion_matrix,
-)
+from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
 
 PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier"
 
@@ -22,7 +15,7 @@ from utils.utils import load_model, load_pickle, create_pickle
 logging.basicConfig(
     level=logging.INFO,
     filemode="w",
-    filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs/predict.log",
+    filename=os.path.join(config.LOGS_PATH, "predict.log"),
     format="%(levelname)s:%(message)s",
 )
 
@@ -32,9 +25,9 @@ class Predict:
         logging.info("Configure the data".title())
         self.model = load_model(
             os.path.join(
-                config.MODEL_PATH,
+                config.MODEL_CHECK_POINT_PATH,
                 "model_{}.pth".format(
-                    len(os.listdir(os.path.join(config.MODEL_PATH))) - 1
+                    len(os.listdir(os.path.join(config.MODEL_CHECK_POINT_PATH))) - 1
                 ),
             )
         )
