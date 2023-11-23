@@ -13,14 +13,14 @@ The Iris Classifier is a Python-based machine learning application designed to c
 ## Prerequisites
 
 - Python 3.9
-- Required libraries: pip install -r requirements.txt
+- Required libraries: `pip install -r requirements.txt`
 
 ## Installation
 
 ```bash
 1. git clone https://github.com/atikul-islam-sajib/GoodPractiseDSTD/tree/main
 
-2. cd /IrisClassifier/iris_classifier
+2. %cd /content/GoodPractiseDSTD
 
 ```
 
@@ -33,7 +33,7 @@ The application can be used in several ways:
 To preprocess your data and train the model:
 
 ```bash
-python iris_classifier/command_line.py --dataset /path/to/IRIS.csv --split 0.20 --preprocessing
+python iris_classifier/clf.py --dataset /path/to/IRIS.csv --split 0.20 --preprocessing
 
 ```
 
@@ -45,13 +45,21 @@ python iris_classifier/command_line.py --dataset /path/to/IRIS.csv --split 0.20 
 To train the model with custom epochs and learning rate, and to display training progress:
 
 ```bash
-python iris_classifier/command_line.py --epochs 200 --lr 0.001 --display True
+python iris_classifier/clf.py --epochs 200 --lr 0.001 --display True
 
 ```
 
 - `--epochs`: Number of training epochs
 - `--lr`: Learning rate
 - `--display`: Set to True to display training progress
+
+### 3. Plot the loss and accuracy
+
+```bash
+from IPython.display import Image
+Image("visualization/charts/file_name.png")
+
+```
 
 ### 3. Making Predictions
 
