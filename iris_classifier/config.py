@@ -1,13 +1,7 @@
-DATA_PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/data/processed"
-MODEL_CHECK_POINT_PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/models"
-PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier"
-METRICS_PATH = (
-    "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier/unittest"
-)
-LOGS_PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs"
-UNIT_PATH = (
-    "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier/unittest"
-)
-MODEL_PATH = (
-    "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier/models"
-)
+DATA_PATH = "./data/processed"
+MODEL_CHECK_POINT_PATH = "./models"
+PATH = "./iris_classifier"
+METRICS_PATH = "./iris_classifier/unittest"
+LOGS_PATH = "./logs"
+UNIT_PATH = "./iris_classifier/unittest"
+MODEL_PATH = "./iris_classifier/models"

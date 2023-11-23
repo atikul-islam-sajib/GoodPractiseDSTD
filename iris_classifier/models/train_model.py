@@ -15,9 +15,7 @@ import torch.nn as nn
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 # Defining path constants for model and data
-PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier"
-
-sys.path.append(PATH)
+sys.path.append("./iris_classifier")
 
 import config
 
@@ -252,6 +250,12 @@ if __name__ == "__main__":
     if args.epochs and args.lr and args.display:
         model_trainer = Trainer(args.epochs, args.lr, args.display)
         model_trainer.train()
+
+        create_pickle(
+            file=model_trainer.history,
+            filename=os.path.join(config.MODEL_PATH, "history.pkl"),
+        )
+
         model_trainer.model_performance()
 
     else:

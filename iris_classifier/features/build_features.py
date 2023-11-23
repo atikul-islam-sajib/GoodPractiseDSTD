@@ -9,11 +9,10 @@ from sklearn.model_selection import train_test_split
 
 import sys
 
-sys.path.append("/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier")
+sys.path.append("./iris_classifier")
 
 from utils.utils import create_pickle, load_pickle
 
-PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/data/processed/"
 import config
 
 logging.basicConfig(
@@ -62,8 +61,8 @@ class FeatureBuilder:
         logging.info("Creating the pickle file")
         create_pickle(
             file=data_frame,
-            filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/data/processed/{}.pkl".format(
-                df.split("/")[-1].split(".")[0]
+            filename=os.path.join(
+                config.DATA_PATH, "{}.pkl".format(df.split("/")[-1].split(".")[0])
             ),
         )
 
@@ -79,8 +78,10 @@ class FeatureBuilder:
 
         The method does not return any values but updates the instance attributes related to data loaders.
         """
-        train_dataset = load_pickle(filename=os.path.join(PATH, "train.pkl"))
-        val_dataset = load_pickle(filename=os.path.join(PATH, "test.pkl"))
+        train_dataset = load_pickle(
+            filename=os.path.join(config.DATA_PATH, "train.pkl")
+        )
+        val_dataset = load_pickle(filename=os.path.join(config.DATA_PATH, "test.pkl"))
         [
             self._convert_into_tensor(
                 data=dataset, name="train_loader" if index == 0 else "test_loader"
@@ -113,7 +114,8 @@ class FeatureBuilder:
         loader = self._tensor_to_dataloader(X=X, y=y)
 
         create_pickle(
-            file=loader, filename=os.path.join(PATH, "{}.pkl".format(dataset["name"]))
+            file=loader,
+            filename=os.path.join(config.DATA_PATH, "{}.pkl".format(dataset["name"])),
         )
 
     def _tensor_to_dataloader(self, **dataset):

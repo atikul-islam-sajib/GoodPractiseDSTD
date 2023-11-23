@@ -3,18 +3,18 @@ import sys
 import os
 import logging
 
-logging.basicConfig(
-    level=logging.INFO,
-    filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs/unit_test.log",
-    filemode="w",
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-)
-
-sys.path.append("/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier")
+sys.path.append("./iris_classifier")
 
 from utils.utils import load_pickle
 
 import config
+
+logging.basicConfig(
+    level=logging.INFO,
+    filename=os.path.join(config.LOGS_PATH, "unittest.log"),
+    filemode="w",
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
 
 
 class FeatureTest(unittest.TestCase):

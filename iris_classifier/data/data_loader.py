@@ -7,7 +7,7 @@ from sklearn.preprocessing import StandardScaler
 import sys
 import os
 
-sys.path.append("/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier")
+sys.path.append("./iris_classifier")
 
 from utils.utils import create_pickle
 import config

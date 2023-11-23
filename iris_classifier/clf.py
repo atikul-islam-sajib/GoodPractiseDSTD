@@ -3,7 +3,7 @@ import logging
 import sys
 import os
 
-PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier"
+PATH = "./iris_classifier"
 sys.path.append(PATH)
 
 import config

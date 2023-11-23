@@ -1,0 +1,6 @@
+2023-11-23 18:35:48,281 - root - INFO - Running FeatureTest setUp
+2023-11-23 18:35:48,287 - root - INFO - Running FeatureTest test_train_features_pickle
+2023-11-23 18:35:48,288 - root - INFO - Running FeatureTest tearDown
+2023-11-23 18:35:48,288 - root - INFO - Running FeatureTest setUp
+2023-11-23 18:35:48,293 - root - INFO - Running FeatureTest test_val_features_pickle
+2023-11-23 18:35:48,293 - root - INFO - Running FeatureTest tearDown

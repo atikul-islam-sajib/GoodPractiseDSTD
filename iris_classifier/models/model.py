@@ -9,20 +9,22 @@ import logging
 import argparse
 from collections import OrderedDict
 
+import sys
+import os
+
+sys.path.append("./iris_classifier")
+
+from utils.utils import create_pickle
+import config
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs/model.log",
+    filename=os.path.join(config.LOGS_PATH, "model.log"),
     filemode="w",
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 logger = logging.getLogger(__name__)
-
-import sys
-
-sys.path.append("/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier")
-
-from utils.utils import create_pickle
 
 
 class Classifier(nn.Module):
@@ -104,11 +106,6 @@ if __name__ == "__main__":
     if args.model:
         classifier = Classifier()
         print(classifier)
-
-        create_pickle(
-            file=classifier,
-            filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/models/raw_models.pkl",
-        )
 
     else:
         logging.exception("Model is not defined perfectly".capitalize())

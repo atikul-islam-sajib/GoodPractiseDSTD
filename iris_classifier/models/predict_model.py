@@ -4,9 +4,7 @@ import os
 import sys
 from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
 
-PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier"
-
-sys.path.append(PATH)
+sys.path.append("./iris_classifier")
 
 import config
 
@@ -46,7 +44,8 @@ class Predict:
 
         try:
             create_pickle(
-                file=self.metrics, filename=os.path.join(PATH, "unittest/metrics.pkl")
+                file=self.metrics,
+                filename=os.path.join(config.PATH, "unittest/metrics.pkl"),
             )
         except Exception as e:
             logging.exception("Exception in metrics file and caught {}".format(e))
