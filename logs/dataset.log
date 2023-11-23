@@ -1,0 +1,10 @@
+2023-11-23 01:21:35,502 - root - INFO - Predict class is called
+2023-11-23 01:21:35,502 - root - INFO - Configure The Data
+2023-11-23 01:21:35,505 - root - INFO - Predict class is executed
+2023-11-23 01:21:35,505 - root - INFO - Predicting
+2023-11-23 01:21:35,506 - root - INFO - 0.9666666666666667
+2023-11-23 01:21:35,508 - root - INFO - 0.9666666666666667
+2023-11-23 01:21:35,509 - root - INFO - 0.9761904761904763
+2023-11-23 01:21:35,509 - root - INFO - 0.9701104613385315
+2023-11-23 01:21:35,512 - root - INFO - Save The Metrics
+2023-11-23 01:21:35,513 - root - INFO - Model performance is printed
