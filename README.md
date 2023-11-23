@@ -18,7 +18,7 @@ The Iris Classifier is a Python-based machine learning application designed to c
 ## Installation
 
 ```bash
-1. git clone https://github.com/atikul-islam-sajib/GoodPractiseDSTD/tree/main
+1. git clone https://github.com/atikul-islam-sajib/GoodPractiseDSTD.git
 
 2. %cd /content/GoodPractiseDSTD
 
@@ -57,11 +57,14 @@ python iris_classifier/clf.py --epochs 200 --lr 0.001 --display True
 
 ```bash
 from IPython.display import Image
+
 Image("visualization/charts/file_name.png")
+
+[change the png file name]
 
 ```
 
-### 3. Making Predictions
+### 4. Making Predictions
 
 To make predictions on new data:
 python iris_classifier/command_line.py --predict
