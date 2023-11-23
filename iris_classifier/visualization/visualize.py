@@ -5,16 +5,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import config
+
 # Configure basic logging settings
 logging.basicConfig(
     level=logging.INFO,
-    filename="/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/logs/chars.log",
+    filename=os.path.join(config.LOGS_PATH, "charts.log"),
     filemode="w",
     format="%(levelname)s %(asctime)s %(message)s",
 )
-
-# Path where the charts will be saved
-PATH = "/Users/shahmuhammadraditrahman/Desktop/IrisClassifier/iris_classifier/visualization/charts/"
 
 
 class Visualizer:
@@ -46,7 +45,7 @@ class Visualizer:
         sns.heatmap(
             dataset.loc[:, dataset.columns[:-1]].corr(), annot=True, cmap="YlGnBu"
         )
-        plt.savefig("{}correlation.png".format(PATH), format="png")
+        plt.savefig("{}correlation.png".format(config.VIS_PATH), format="png")
         plt.clf()
 
     def _show_distribution_target_class(self, dataset):
@@ -59,7 +58,7 @@ class Visualizer:
         plt.ylabel("Count")
         plt.title("Distribution of Target Class")
 
-        plt.savefig("{}target_distribution.png".format(PATH))
+        plt.savefig("{}target_distribution.png".format(config.VIS_PATH))
         plt.clf()
 
     def _check_outliers(self, dataset):
@@ -71,7 +70,7 @@ class Visualizer:
             plt.subplot(1, 4, index + 1)
             sns.boxplot(y=feature, data=dataset)
 
-        plt.savefig("{}outliers.png".format(PATH))
+        plt.savefig("{}outliers.png".format(config.VIS_PATH))
         plt.clf()
 
     def _show_distribution(self, dataset):
@@ -82,7 +81,7 @@ class Visualizer:
             plt.subplot(1, 4, index + 1)
             sns.histplot(data=dataset, x=feature)
 
-        plt.savefig("{}distribution.png".format(PATH))
+        plt.savefig("{}distribution.png".format(config.VIS_PATH))
         plt.clf()
 
     def show_model_performance(self, **metrics):
@@ -90,7 +89,9 @@ class Visualizer:
             plt.plot(value, label=key)
             plt.legend()
 
-        plt.savefig(os.path.join(PATH, "model-{}.png".format(key.split("_")[1])))
+        plt.savefig(
+            os.path.join(config.VIS_PATH, "model-{}.png".format(key.split("_")[1]))
+        )
         plt.show()
         plt.clf()
 

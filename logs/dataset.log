@@ -1,10 +1,11 @@
-2023-11-23 18:46:14,414 - root - INFO - Predict class is called
-2023-11-23 18:46:14,414 - root - INFO - Configure The Data
-2023-11-23 18:46:14,416 - root - INFO - Predict class is executed
-2023-11-23 18:46:14,416 - root - INFO - Predicting
-2023-11-23 18:46:14,417 - root - INFO - 0.9333333333333333
-2023-11-23 18:46:14,418 - root - INFO - 0.9363636363636364
-2023-11-23 18:46:14,419 - root - INFO - 0.9393939393939394
-2023-11-23 18:46:14,420 - root - INFO - 0.933249791144528
-2023-11-23 18:46:14,423 - root - INFO - Save The Metrics
-2023-11-23 18:46:14,424 - root - INFO - Model performance is printed
+2023-11-23 18:57:27,265 - root - INFO - Dataloader class is called
+2023-11-23 18:57:27,265 - root - INFO - Loading Data & Scaling The Dataset
+2023-11-23 18:57:27,266 - root - INFO - Standard Scaling Is Used For Normalization Technique
+2023-11-23 18:57:27,267 - root - INFO - Splitting dataset
+2023-11-23 18:57:27,269 - root - INFO - Buildfeatures class is called
+2023-11-23 18:57:27,269 - features.build_features - INFO - Initializing FeatureBuilder
+2023-11-23 18:57:27,269 - root - INFO - Building Features starts
+2023-11-23 18:57:27,269 - root - INFO - Creating the pickle file
+2023-11-23 18:57:27,270 - root - INFO - Building Features starts
+2023-11-23 18:57:27,270 - root - INFO - Creating the pickle file
+2023-11-23 18:57:27,279 - root - INFO - Dataloader & featurebuilder class is executed
